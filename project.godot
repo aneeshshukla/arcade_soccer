@@ -13,7 +13,7 @@ config_version=5
 config/name="arcade soccer"
 run/main_scene="uid://b24us2nuv8jhy"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://b83peia28u8be"
 
 [autoload]
 
