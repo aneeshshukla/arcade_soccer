@@ -71,6 +71,11 @@ radius = 4.0
 collision_layer = 4
 script = ExtResource("1_aaoto")
 
+[node name="BallShadow" type="Sprite2D" parent="."]
+texture = ExtResource("2_12lam")
+centered = false
+offset = Vector2(-8, -16)
+
 [node name="BallSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_itkb2")
 centered = false
@@ -85,11 +90,7 @@ shape = SubResource("CircleShape2D_12lam")
 libraries = {
 &"": SubResource("AnimationLibrary_px0ht")
 }
-
-[node name="BallShadow" type="Sprite2D" parent="."]
-texture = ExtResource("2_12lam")
-centered = false
-offset = Vector2(-8, -16)
+autoplay = "idle"
 
 [node name="PlayerDetectionArea" type="Area2D" parent="."]
 position = Vector2(0, -5)
