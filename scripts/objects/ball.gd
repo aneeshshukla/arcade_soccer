@@ -38,7 +38,7 @@ func shoot(shot_velocity : Vector2) -> void:
 	carrier = null
 	switch_state(Ball.State.SHOT)
 
-func pass_to(destination: Vector2, h_velocity = 1) -> void:
+func pass_to(destination: Vector2, h_velocity = .8) -> void:
 	height_velocity = h_velocity
 	var direction := position.direction_to(destination)
 	var distance := position.distance_to(destination)
