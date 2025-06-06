@@ -3,7 +3,7 @@ extends Node
 
 const GRAVITY := 5.0
 
-signal  state_tansition_requested(new_state: Ball.State)
+signal state_tansition_requested(new_state: Ball.State)
 
 var ball : Ball = null
 var carrier : Player = null

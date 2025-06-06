@@ -7,6 +7,9 @@ enum State {CARRIED, FREEFORM, SHOT}
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var ball_sprite: Sprite2D = %BallSprite
 
+@export var FRICTION_AIR : float = 35.0
+@export var FRICTION_GROUND : float = 250.0
+
 var carrier : Player = null
 var current_state : BallState = null
 var state_factory = BallStateFactory.new()
@@ -34,3 +37,13 @@ func shoot(shot_velocity : Vector2) -> void:
 	velocity = shot_velocity
 	carrier = null
 	switch_state(Ball.State.SHOT)
+
+func pass_to(destination: Vector2, h_velocity = 1) -> void:
+	height_velocity = h_velocity
+	var direction := position.direction_to(destination)
+	var distance := position.distance_to(destination)
+	var intensity = sqrt(distance*FRICTION_GROUND + (distance**2)+FRICTION_GROUND/1.6 + 0.4*(FRICTION_GROUND**2)*distance)/10
+	print(intensity)
+	velocity = intensity * direction
+	carrier = null
+	switch_state(Ball.State.FREEFORM)
