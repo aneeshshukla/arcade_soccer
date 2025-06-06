@@ -22,5 +22,5 @@ func _process(delta: float) -> void:
 		ball.animation_player.play('roll')
 	else:
 		ball.animation_player.pause()
-	process_gravity(delta)
+	process_gravity(delta,0.2)
 	ball.position = carrier.position + Vector2(vx + carrier.heading.x * OFFSET_FROM_PLAYER.x, OFFSET_FROM_PLAYER.y)
