@@ -1,6 +1,12 @@
 class_name Player
 extends CharacterBody2D
 
+const CONTROL_SCHEME_MAP : Dictionary = {
+	ControlScheme.CPU : preload("res://assets/art/props/cpu.png"),
+	ControlScheme.P1 : preload("res://assets/art/props/1p.png"),
+	ControlScheme.P2 : preload("res://assets/art/props/2p.png")
+}
+
 enum ControlScheme {CPU, P1, P2}
 enum State {MOVING, TACKLING, RECOVERING, PREPPING_SHOT, SHOOTING, PASSING}
 
@@ -12,6 +18,7 @@ enum State {MOVING, TACKLING, RECOVERING, PREPPING_SHOT, SHOOTING, PASSING}
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var player_sprite: Sprite2D = %player_sprite
 @onready var teammate_detection_area: Area2D = %TeammateDetectionArea
+@onready var control_sprite: Sprite2D = %Control_Sprite
 
 var current_state: PlayerState = null
 var heading := Vector2.RIGHT
@@ -21,6 +28,7 @@ func _ready() -> void:
 	switch_state(State.MOVING)
 
 func _process(_delta: float) -> void:
+	set_control_texture()
 	flip_sprites()
 	move_and_slide()
 
@@ -56,3 +64,7 @@ func has_ball() -> bool:
 
 func on_animation_complete() -> void:
 	current_state.on_animation_complete()
+
+func  set_control_texture() -> void:
+	control_sprite.texture = CONTROL_SCHEME_MAP[control_scheme]
+	control_sprite.visible = has_ball() or not control_scheme == ControlScheme.CPU

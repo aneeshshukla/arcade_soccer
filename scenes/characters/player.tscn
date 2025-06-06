@@ -1,7 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://rjmdcpflkblf"]
+[gd_scene load_steps=14 format=3 uid="uid://rjmdcpflkblf"]
 
 [ext_resource type="Texture2D" uid="uid://4633vdpypoue" path="res://assets/art/characters/soccer-player.png" id="1_rp718"]
 [ext_resource type="Script" uid="uid://bboga4xxxiwkn" path="res://scripts/characters/player.gd" id="1_yewv4"]
+[ext_resource type="Texture2D" uid="uid://v65pmdskgvgd" path="res://assets/art/characters/player-shadow.png" id="2_dyp2m"]
+[ext_resource type="Texture2D" uid="uid://brnyg3cff0wek" path="res://assets/art/props/1p.png" id="4_atpat"]
 
 [sub_resource type="Animation" id="Animation_yewv4"]
 length = 0.001
@@ -159,6 +161,11 @@ collision_layer = 2
 script = ExtResource("1_yewv4")
 speed = 80.0
 
+[node name="player_shadow" type="Sprite2D" parent="."]
+texture = ExtResource("2_dyp2m")
+centered = false
+offset = Vector2(-8, -15)
+
 [node name="player_sprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 y_sort_enabled = true
@@ -167,6 +174,13 @@ centered = false
 offset = Vector2(-16, -32)
 hframes = 6
 vframes = 13
+
+[node name="Control_Sprite" type="Sprite2D" parent="player_sprite"]
+unique_name_in_owner = true
+position = Vector2(1, -35)
+texture = ExtResource("4_atpat")
+centered = false
+offset = Vector2(-8, -6)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
